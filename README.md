@@ -9,7 +9,7 @@ Shuffles  Top quality Earth Porn Images from /r/EarthPorn as your desktop backgr
 $ redditwallpaper
 ```
 
-### What id does ?
+### What it does ?
 
 Automatically sets the top trending, good resolution images on reddit as your wallpaper.
 
