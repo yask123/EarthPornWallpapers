@@ -57,12 +57,15 @@ def main():
     wcounts = len(wlinks)
 
     while True:
+        fail = False
+        print i
         each = wlinks[i]
         try:
             url = sanitize(each.url)
             imgext = url.split('.')[-1]
         except ValueError as e:
             print e
+            i+=1
             continue
 
         response = requests.get(url, stream=True)
@@ -77,16 +80,21 @@ def main():
             width, height = im.size
             # We only want high resolution images
             if int(width) < 2000 or int(height) < 1300:
-                continue
+                i+=1
+                print 'poor pic, failed'
+                fail = True
+
+        if fail:
+            continue
 
         osxcmd = 'osascript -e \'tell application "Finder" to set desktop picture to POSIX file "' + imagePath + '" \''
         os.system(osxcmd)
         print 'Done'
 
         i += 1
-        if i == wcounts:
+        if i == wcounts -1:
             i = 0
-        time.sleep(wall_duration)
+        time.sleep(1)
 
 
 if __name__ == '__main__':
