@@ -30,6 +30,8 @@ def main():
         help="Sort method , eg: get_hot")
     parser.add_argument("-t", "--time", type=str, default="10", nargs='+',
         help="Time (in seconds) duration for each wallpaper")
+    parser.add_argument("-count", "--count", type=int, default="10", nargs='+',
+        help="Count of total number of wallpapers to select")
     args = parser.parse_args()
 
     r = praw.Reddit(user_agent='RedditWallpaper Script by '+get_username())
@@ -37,10 +39,9 @@ def main():
     sub_reddit = args.sub_reddit
     sort_method = args.sort_method
     wall_duration = int(args.time)
+    count = args.count
 
-
-    #submissions = r.get_subreddit(sub_reddit).get_top_from_all(limit=int(args.t))
-    submissions = getattr(r.get_subreddit(str(sub_reddit)), str(sort_method))(limit= 10)
+    submissions = getattr(r.get_subreddit(str(sub_reddit)), str(sort_method))(limit= count)
 
 
     my_dir = os.path.expanduser('~/.epwallpapers')
