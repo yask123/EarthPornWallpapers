@@ -23,5 +23,5 @@ Automatically sets the top trending, good resolution images on reddit as your wa
 To select top hot 40 wallpapers from [r/xyz]() subreddit, and set duration for 10 mins
 
 ```bash
-$ redditwallpaper -c xyz -sort get_hot -time 10
+$ redditwallpaper -c xyz -sort get_hot -count 40 -time 10
 ```
